@@ -11,5 +11,6 @@
     <h2>Enter your name:</h2>
     <input type="text" (input)="updateUserName($event)" placeholder="Your name"/>
     <h3 *ngIf="userName">Hello from {{ userName }}</h3>
+    <span class=error-output>{{this.errorMessage}}</span>
   </div>
 <router-outlet></router-outlet>
