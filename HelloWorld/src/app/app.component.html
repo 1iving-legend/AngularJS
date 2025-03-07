@@ -1,8 +1,15 @@
 <div>
-    <h1>{{this.title}}</h1>
+    <h1>Hello {{this.userName}} from Bridgelabz !!!</h1>
 
     <img [src]=imgUrl 
     (click)="onClick($event)"
     alt="BridgeLabz Image"/>
 </div>
+
+
+<div style="text-align: center;">
+    <h2>Enter your name:</h2>
+    <input type="text" (input)="updateUserName($event)" placeholder="Your name"/>
+    <h3 *ngIf="userName">Hello from {{ userName }}</h3>
+  </div>
 <router-outlet></router-outlet>
