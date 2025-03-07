@@ -1,6 +1,8 @@
 <div>
     <h1>{{this.title}}</h1>
 
-    <img [src]=imgUrl alt="BridgeLabz Image"/>
+    <img [src]=imgUrl 
+    (click)="onClick($event)"
+    alt="BridgeLabz Image"/>
 </div>
 <router-outlet></router-outlet>
