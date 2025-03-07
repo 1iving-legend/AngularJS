@@ -7,29 +7,37 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  imports: [CommonModule, FormsModule,RouterOutlet],
+  styleUrls: ['./app.component.css'],  
+  imports: [CommonModule, FormsModule, RouterOutlet],
 })
 export class AppComponent {
   title = 'HelloWorld';
   imgUrl = "../brlogo.jpg";
-  url="https://www.bridgelabz.com/";
+  url = "https://www.bridgelabz.com/";
 
-  userName: string ='';
+  userName: string = '';
+  errorMessage: string = '';
 
- updateUserName(event: Event) {
-    this.userName = (event.target as HTMLInputElement).value;
+  ngOnInit(): void {
+    this.title = "Hello From BridgeLabz";
   }
 
-  ngOnInit():void{
+  updateUserName(event: Event) {
+    const inputValue = (event.target as HTMLInputElement).value;
+    const pattern = /^[A-Z][a-zA-Z]{2,}(\s)?([A-Z][a-zA-z]{2,})?$/; 
 
-    this.title="Hello From BridgeLabz";
+    if (pattern.test(inputValue)) {
+      this.userName = inputValue;
+      this.errorMessage = '';
+    } else {
+      this.userName = '';
+      this.errorMessage = 'Invalid name! Start with a capital letter & min 3 letters.';
+    }
   }
 
   onClick(event: MouseEvent): void {
     console.log("Mouse was clicked", event);
-    
-    // Using an anchor element to ensure the new tab opens
+
     const newTab = window.open(this.url, "_blank");
     if (newTab) {
       newTab.focus();
